@@ -1,0 +1,9 @@
+.body{
+  background-color: #000;
+  color: #FFF;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
