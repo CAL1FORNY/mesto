@@ -20,5 +20,6 @@
     background-size: 7.5px;
     background: transparent url('../../../images/edit_small.svg');
     border: none;
+    margin: 0 20px 0 auto;
   }
 }
