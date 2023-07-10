@@ -1,12 +1,12 @@
-.popup{
+.popup {
   width: 100%;
   height: 100%;
-  display: none;
-  transition: visibility .6s, opacity .6s ease;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
-  top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  display: none;
+  transition: visibility 0.5s, opacity 0.5s ease-in-out;
 }
