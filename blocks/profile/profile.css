@@ -1,5 +1,5 @@
 .profile{
-  margin: 0 auto 36px auto;
+  margin: 0 auto 45px auto;
   padding: 0;
   max-width: 880px;
   display: flex;
@@ -17,5 +17,6 @@
   .profile{
     max-width: 282px;
     flex-direction: column;
+    margin: 0 auto 36px auto;
   }
 }
