@@ -52,6 +52,8 @@ const addCards = (name, link) => {
 
   copyCard.querySelector('.cards__like').addEventListener('click', evt => evt.target.classList.toggle('cards__like_active'));
 
+  copyCard.querySelector('.cards__delete').addEventListener('click', evt => evt.target.closest('.cards__item').remove());
+
   return copyCard;
 }
 
