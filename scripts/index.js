@@ -44,33 +44,35 @@ const addInitialCards = () => {
 }
 
 const addCards = (name, link) => {
-  const contentCardTemplate = document.querySelector('.template').content;
-  const copyCardTemplate = contentCardTemplate.querySelector('.cards__item').cloneNode(true);
+  const contentCard = document.querySelector('.template').content;
+  const copyCard = contentCard.querySelector('.cards__item').cloneNode(true);
 
-  copyCardTemplate.querySelector('.cards__description').textContent = name;
-  copyCardTemplate.querySelector('.cards__image').src = link;
+  copyCard.querySelector('.cards__description').textContent = name;
+  copyCard.querySelector('.cards__image').src = link;
 
-  return copyCardTemplate;
+  copyCard.querySelector('.cards__like').addEventListener('click', evt => evt.target.classList.toggle('cards__like_active'));
+
+  return copyCard;
 }
 
-const popupOpen = function (popupName){
+const popupOpen = popupName => {
   popupName.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
 }
 
-const popupClose = function (popupName){
+const popupClose = popupName => {
   popupName.classList.remove('popup_opened');
 }
 
-const formSubmit = function (evt){
+const formSubmit = evt => {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
   popupClose(popupEdit);
 }
 
-const saveCard = function (evt){
+const saveCard = evt => {
   evt.preventDefault();
   cardsArea.prepend(addCards(nameCardInput.value, linkCardInput.value));
   popupClose(popupAdd);
