@@ -9,8 +9,11 @@ const nameCardInput = popupAdd.querySelector('.popup__input_type_name');
 const descriptionInput = popupEdit.querySelector('.popup__input_type_description');
 const linkCardInput = popupAdd.querySelector('.popup__input_type_description');
 const cardsArea = document.querySelector('.cards');
+const popupZoom = document.querySelector('.popup_zoom');
 const popupEditCloseIcon = popupEdit.querySelector('.popup__close');
 const popupAddCloseIcon = popupAdd.querySelector('.popup__close');
+const popupZoomCloseIcon = popupZoom.querySelector('.popup__close');
+
 
 const initialCards = [
   {
@@ -54,6 +57,14 @@ const addCards = (name, link) => {
 
   copyCard.querySelector('.cards__delete').addEventListener('click', evt => evt.target.closest('.cards__item').remove());
 
+  const openImage = () => {
+    popupZoom.querySelector('.popup__description').textContent = name;
+    popupZoom.querySelector('.popup__image').src = link;
+    popupOpen(popupZoom);
+  }
+
+  copyCard.querySelector('.cards__image').addEventListener('click', openImage);
+
   return copyCard;
 }
 
@@ -85,5 +96,6 @@ profileEdit.addEventListener('click', () => popupOpen(popupEdit));
 popupEditCloseIcon.addEventListener('click', () => popupClose(popupEdit));
 addCard.addEventListener('click', () => popupOpen(popupAdd));
 popupAddCloseIcon.addEventListener('click', () => popupClose(popupAdd));
+popupZoomCloseIcon.addEventListener('click', () => popupClose(popupZoom));
 popupEdit.addEventListener('submit', formSubmit);
 popupAdd.addEventListener('submit', saveCard);
