@@ -14,34 +14,6 @@ const popupEditCloseIcon = popupEdit.querySelector('.popup__close');
 const popupAddCloseIcon = popupAdd.querySelector('.popup__close');
 const popupZoomCloseIcon = popupZoom.querySelector('.popup__close');
 
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const addInitialCards = () => {
   initialCards.forEach(card => cardsArea.append(addCards(card.name, card.link)));
 }
@@ -88,6 +60,8 @@ const formSubmit = evt => {
 const saveCard = evt => {
   evt.preventDefault();
   cardsArea.prepend(addCards(nameCardInput.value, linkCardInput.value));
+  nameCardInput.value = "";
+  linkCardInput.value = "";
   popupClose(popupAdd);
 }
 
