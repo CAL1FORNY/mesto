@@ -5,10 +5,10 @@ const popupCards = document.querySelector('.popup_add');
 const popupZoom = document.querySelector('.popup_zoom');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
-const nameInput = popupProfile.querySelector('.popup__input_type_name');
-const nameCardInput = popupCards.querySelector('.popup__input_type_name');
-const descriptionInput = popupProfile.querySelector('.popup__input_type_description');
-const linkCardInput = popupCards.querySelector('.popup__input_type_description');
+const nameInput = popupProfile.querySelector('#username-input');
+const nameCardInput = popupCards.querySelector('#name-input');
+const descriptionInput = popupProfile.querySelector('#description-input');
+const linkCardInput = popupCards.querySelector('#link-input');
 const cardsArea = document.querySelector('.cards');
 const contentCard = document.querySelector('.template').content;
 const popupZoomDescription = popupZoom.querySelector('.popup__description');
@@ -16,6 +16,7 @@ const popupZoomImage = popupZoom.querySelector('.popup__image');
 const closeButton = document.querySelectorAll('.popup__close');
 const popupProfileForm = popupProfile.querySelector('.popup__form');
 const popupCardForm = popupCards.querySelector('.popup__form');
+const popupAll = document.querySelectorAll('.popup');
 
 
 const addInitialCards = () => {
@@ -47,8 +48,16 @@ const addCards = (name, link) => {
   return copyCard;
 }
 
+const closePopupWithEsc = evt => {
+  if (evt.keyCode === 27){
+    const popupOpened = document.querySelector('.popup_opened')
+    closePopup(popupOpened);
+  }
+}
+
 const openPopup = popupName => {
   popupName.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupWithEsc)
 }
 
 const openProfilePopup = () => {
@@ -60,6 +69,14 @@ const openProfilePopup = () => {
 const closePopup = popupName => {
   popupName.classList.remove('popup_opened');
 }
+
+popupAll.forEach(popupElement => {
+  popupElement.addEventListener('mousedown', evt => {
+    if(evt.target.classList.contains('popup_opened')){
+      closePopup(popupElement);
+    }
+  })
+})
 
 const handleProfileFormSubmit = evt => {
   evt.preventDefault();
