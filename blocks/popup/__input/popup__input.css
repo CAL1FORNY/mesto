@@ -9,9 +9,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 0 36px 30px;
-  padding: 0;
+  margin: 0 36px 0;
+  padding: 0 0 13px 0;
   vertical-align: top;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 644px) {

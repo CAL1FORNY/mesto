@@ -11,7 +11,7 @@
   margin: 17px 36px 37px;
   padding: 0;
   border: none;
-  transition: opacity 0.2s;
+  transition: all 0.4s ease-in-out;
   cursor: pointer;
 }
 
