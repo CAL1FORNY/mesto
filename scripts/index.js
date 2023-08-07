@@ -92,7 +92,7 @@ const saveCardSubmit = evt => {
   cardsArea.prepend(createCards(nameCardInput.value, linkCardInput.value));
   evt.target.reset();
   closePopup(popupCards);
-  toggleButtonState(popupCardForm, popupSubmit, classListForm);
+  toggleButtonState(popupCardForm, popupSubmit, validationSettings);
 }
 
 addInitialCards();
