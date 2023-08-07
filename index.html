@@ -46,11 +46,13 @@
       <button type="button" class="popup__close" aria-label="Закрыть форму"></button>
       <h2 class="popup__name">Редактировать профиль</h2>
       <form class="popup__form" name="profile" novalidate>
-        <label>
-          <input type="text" class="popup__input popup__input_type_name" id="username-input" name="username" required placeholder="Имя" minlength="2">
+        <label for="username-input" class="popup__label">
+          <input type="text" class="popup__input" id="username-input" name="username" value="Жак-Ив Кусто" required placeholder="Имя" minlength="2" maxlength="40">
+          <span class="popup__input-error username-input-error"></span>
         </label>
-        <label>
-          <input type="text" class="popup__input popup__input_type_description" id="description-input" name="description" required placeholder="О себе" minlength="2">
+        <label for="description-input" class="popup__label">
+          <input type="text" class="popup__input" id="description-input" name="description" value="Исследователь океана" required placeholder="О себе" minlength="2" maxlength="200">
+          <span class="popup__input-error description-input-error"></span>
         </label>
         <button type="submit" class="popup__submit" aria-label="Сохранить">Сохранить</button>
       </form>
@@ -62,11 +64,13 @@
       <button type="button" class="popup__close" aria-label="Закрыть форму"></button>
       <h2 class="popup__name">Новое место</h2>
       <form class="popup__form" name="mesto" novalidate>
-        <label>
-          <input type="text" class="popup__input popup__input_type_name" id="name-input" name="mesto-name" required placeholder="Название">
+        <label for="place-name-input" class="popup__label">
+          <input type="text" class="popup__input" id="place-name-input" name="place-name" required placeholder="Название" minlength="2" maxlength="30">
+          <span class="popup__input-error place-name-input-error"></span>
         </label>
-        <label>
-          <input type="text" class="popup__input popup__input_type_description" id="link-input" name="link-image" required placeholder="Ссылка на картинку">
+        <label for="place-image-input" class="popup__label">
+          <input type="url" class="popup__input" id="place-image-input" name="place-image" required placeholder="Ссылка на картинку">
+          <span class="popup__input-error place-image-input-error"></span>
         </label>
         <button type="submit" class="popup__submit" aria-label="Создать">Создать</button>
       </form>
@@ -82,6 +86,7 @@
   </div>
 
   <script src="scripts/initialCards.js"></script>
+  <script src="scripts/validate.js"></script>
   <script src="scripts/index.js"></script>
 </body>
 </html>
