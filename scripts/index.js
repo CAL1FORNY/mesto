@@ -6,9 +6,9 @@ const popupZoom = document.querySelector('.popup_zoom');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 const nameInput = popupProfile.querySelector('#username-input');
-const nameCardInput = popupCards.querySelector('#name-input');
+const nameCardInput = popupCards.querySelector('#place-name-input');
 const descriptionInput = popupProfile.querySelector('#description-input');
-const linkCardInput = popupCards.querySelector('#link-input');
+const linkCardInput = popupCards.querySelector('#place-image-input');
 const cardsArea = document.querySelector('.cards');
 const contentCard = document.querySelector('.template').content;
 const popupZoomDescription = popupZoom.querySelector('.popup__description');
@@ -17,6 +17,7 @@ const closeButton = document.querySelectorAll('.popup__close');
 const popupProfileForm = popupProfile.querySelector('.popup__form');
 const popupCardForm = popupCards.querySelector('.popup__form');
 const popupAll = document.querySelectorAll('.popup');
+const popupSubmit = popupCards.querySelector('.popup__submit');
 
 
 const addInitialCards = () => {
@@ -49,7 +50,7 @@ const addCards = (name, link) => {
 }
 
 const closePopupWithEsc = evt => {
-  if (evt.keyCode === 27){
+  if (evt.key === 'Escape'){
     const popupOpened = document.querySelector('.popup_opened')
     closePopup(popupOpened);
   }
@@ -72,7 +73,7 @@ const closePopup = popupName => {
 
 popupAll.forEach(popupElement => {
   popupElement.addEventListener('mousedown', evt => {
-    if(evt.target.classList.contains('popup_opened')){
+    if(evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')){
       closePopup(popupElement);
     }
   })
@@ -88,9 +89,9 @@ const handleProfileFormSubmit = evt => {
 const saveCardSubmit = evt => {
   evt.preventDefault();
   cardsArea.prepend(addCards(nameCardInput.value, linkCardInput.value));
-  nameCardInput.value = "";
-  linkCardInput.value = "";
+  evt.target.reset();
   closePopup(popupCards);
+  toggleButtonState(popupCardForm, popupSubmit, classListForm);
 }
 
 addInitialCards();
