@@ -13,6 +13,9 @@
 * Media queries;
 * Nested БЭМ;
 * Pop-up;
+* ООП;
+* NPM;
+* Webpack;
 
 **Figma**
 
