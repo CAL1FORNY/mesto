@@ -8,7 +8,10 @@ const linkCardInput = popupCards.querySelector('#place-image-input');
 const nameInput = popupProfile.querySelector('#username-input');
 const descriptionInput = popupProfile.querySelector('#description-input');
 const formCards = popupCards.querySelector('.popup__form');
+const popupAvatarEdit = document.querySelector('#avatar-popup');
+const popupAvatarEditForm = popupAvatarEdit.querySelector('.popup__form');
+const avatarEditIcon = document.querySelector('.profile__avatar-edit')
 
 export {
-  profileEditIcon, cardAddIcon, popupProfile, popupProfileForm, popupCards, nameCardInput, linkCardInput, nameInput, descriptionInput, formCards
+  profileEditIcon, cardAddIcon, popupProfile, popupProfileForm, popupCards, nameCardInput, linkCardInput, nameInput, descriptionInput, formCards, popupAvatarEditForm, avatarEditIcon
 }

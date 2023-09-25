@@ -20,6 +20,11 @@ class FormValidator {
     errorItem.textContent = '';
   }
 
+  resetValidate(){
+    this._inputList.forEach((inputItem) => { this._hideValidationError(inputItem); })
+    this._toggleButtonState();
+  }
+
   _checkInputValidity(inputItem){
     if(!inputItem.validity.valid){
       this._showValidationError(inputItem, inputItem.validationMessage);
@@ -34,7 +39,7 @@ class FormValidator {
     });
   }
 
-  disableSubmitButton() {
+  _disableSubmitButton() {
     this._submitButton.setAttribute('disabled', 'true');
     this._submitButton.classList.add(this._validationSettings.inactiveButtonClass);
   }
@@ -46,7 +51,7 @@ class FormValidator {
 
   _toggleButtonState(){
     if (this._hasInvalidInput()){
-      this.disableSubmitButton();
+      this._disableSubmitButton();
     }else{
       this._enableSubmitButton();
     }

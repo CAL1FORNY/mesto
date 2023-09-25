@@ -7,6 +7,8 @@ class PopupWithForm extends Popup {
     this._callbackFormSubmit = callbackFormSubmit;
     this._popupFormItem = this._popupItem.querySelector('.popup__form');
     this._inputList = Array.from(this._popupFormItem.querySelectorAll('.popup__input'));
+    this._sendButton = this._popupItem.querySelector('.popup__submit');
+    this._sendButtonText = this._sendButton.textContent;
   }
 
   _getInputValues() {
@@ -15,6 +17,13 @@ class PopupWithForm extends Popup {
       formValues[inputItem.name] = inputItem.value;
     });
     return formValues;
+  }
+
+  putSavingProcess() {
+    this._sendButton.textContent = 'Сохранение...';
+  }
+  returnSavingProcess() {
+    this._sendButton.textContent = this._sendButtonText;
   }
 
   setEventListeners() {
