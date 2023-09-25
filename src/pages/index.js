@@ -27,7 +27,7 @@ const renderCard = function (cardObject) {
   const cardItem = new Card(cardObject, '.template', userId, { cardId: cardObject._id, authorId: cardObject.owner._id }, {
     handleCardZoom: (name, image) => { popupImageZoom.open(name, image) },
     handleCardDelete: (elementCard, cardId) => { popupNoticeDelete.open(elementCard, cardId) },
-    handleCardLike: (cardId) => { apiConnect.putCardLike(cardId)
+    handleCardLike: (cardId) => { apiGet.putCardLike(cardId)
       .then((res) => {
         cardItem.renderCardLike(res);
       })
