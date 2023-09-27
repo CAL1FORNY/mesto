@@ -9,7 +9,8 @@ class UserInfo {
   getUserInfo(){
     return{
       username: this._username.textContent,
-      description: this._userDescription.textContent
+      description: this._userDescription.textContent,
+      avatarLink: this._avatarLink.src
     };
   }
 

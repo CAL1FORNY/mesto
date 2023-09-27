@@ -1,9 +1,9 @@
 class Card {
-  constructor(cardObject, templateElem, userId, authorData, handleActions){
+  constructor(cardObject, templateSelector, userId, authorData, handleActions){
     this._card = cardObject;
     this._cardName = this._card.name;
     this._cardImage = this._card.link;
-    this._cardTemplate = templateElem;
+    this._cardSelector = templateSelector;
     this._userId = userId;
     this._cardId = authorData.cardId;
     this._authorId = authorData.authorId;
@@ -14,7 +14,7 @@ class Card {
   }
 
   _getCard(){
-    return document.querySelector(this._cardTemplate).content.querySelector('.cards__item').cloneNode(true);
+    return document.querySelector(this._cardSelector).content.querySelector('.cards__item').cloneNode(true);
   }
 
   deleteCard(){
@@ -23,36 +23,36 @@ class Card {
   }
 
   renderCardLike(card) {
-    this._likeArea = card.likes;
-    if (this._likeArea.length === 0) {
+    this._likes = card.likes;
+    if (this._likes.length === 0) {
       this.likeSelector.textContent = '';
     } else {
-      this.likeSelector.textContent = this._likeArea.length;
+      this.likeSelector.textContent = this._likes.length;
     }
-    if (this._likedCard()) {
+    if (this._isLiked()) {
       this._likeIcon.classList.add('cards__like_active');
     } else {
       this._likeIcon.classList.remove('cards__like_active');
     }
   }
-  _likedCard() {
-    return this._likeArea.find((userLike) => userLike._id === this._userId);
+  _isLiked() {
+    return this._likes.find((userLike) => userLike._id === this._userId);
   }
-  _interactLike() {
-    if (this._likedCard()) {
+  _handleLikeClick() {
+    if (this._isLiked()) {
       this._removeLike(this._cardId);
     } else {
       this._putLike(this._cardId);
     }
   };
 
-  createCards() {
+  createCard() {
     this._elementCard = this._getCard();
     this._elementImages = this._elementCard.querySelector('.cards__image');
     this._elementName = this._elementCard.querySelector('.cards__description');
     this._likeIcon = this._elementCard.querySelector('.cards__like');
     this._deleteIcon = this._elementCard.querySelector('.cards__delete');
-    this.likeSelector = this._elementCard.querySelector('.cards__like-counter')
+    this.likeCounter = this._elementCard.querySelector('.cards__like-counter')
     this._elementName.textContent = this._cardName;
     this._elementImages.src = this._cardImage;
     this._elementImages.alt = this._cardName;
@@ -62,7 +62,7 @@ class Card {
   }
 
   _addEventHandlers = () => {
-    this._likeIcon.addEventListener('click', () => this._interactLike());
+    this._likeIcon.addEventListener('click', () => this._handleLikeClick());
     this._elementImages.addEventListener('click', () => this._cardZoom(this._cardName, this._cardImage));
     if(this._userId === this._authorId){
       this._deleteIcon.addEventListener('click', () => this._cardDelete(this, this._cardId));
