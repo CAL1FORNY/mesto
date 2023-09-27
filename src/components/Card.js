@@ -1,6 +1,6 @@
 class Card {
-  constructor(cardObject, templateSelector, userId, authorData, handleActions){
-    this._card = cardObject;
+  constructor(cardData, templateSelector, userId, authorData, handleActions){
+    this._card = cardData;
     this._cardName = this._card.name;
     this._cardImage = this._card.link;
     this._cardSelector = templateSelector;

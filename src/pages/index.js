@@ -31,7 +31,7 @@ const userInfo = new UserInfo({
   userAvatarSelector: ".profile__avatar",
 });
 
-const createCard = function (cardData) {
+const createCards = function (cardData) {
   const cardItem = new Card(
     cardData,
     ".template",
@@ -47,7 +47,7 @@ const createCard = function (cardData) {
       handleCardLike: (cardId) => {
         api.putCardLike(cardId)
           .then((res) => {
-            cardItem.createCardLike(res);
+            cardItem.renderCardLike(res);
           })
           .catch((err) => {
             console.log(`При лайке карточки возникла ошибка, ${err}`);
@@ -56,7 +56,7 @@ const createCard = function (cardData) {
       handleCardDeleteLike: (cardId) => {
         api.deleteCardLike(cardId)
           .then((res) => {
-            cardItem.createCardLike(res);
+            cardItem.renderCardLike(res);
           })
           .catch((err) => {
             console.log(`При дизлайке карточки возникла ошибка, ${err}`);
@@ -70,21 +70,21 @@ const createCard = function (cardData) {
 const cardsSection = new Section(
   {
     renderer: (cardData) => {
-      cardsSection.addItem(createCard(cardData));
+      cardsSection.prependItem(createCards(cardData));
     },
   },
   ".cards"
 );
 
-Promise.all([api.getUserData(), api.getInitialCards()])
+Promise.all([ api.getUserData(), api.getInitialCards() ])
   .then(([userProfileData, cards]) => {
     userId = userProfileData._id;
     userInfo.setUserInfo({
       username: userProfileData.name,
       description: userProfileData.about,
     });
-    cardsSection.renderItems(cards);
     userInfo.setUserAvatar(userProfileData.avatar);
+    cardsSection.renderItems(cards);
   })
   .catch((err) => {
     console.log(`Возникла глобальная ошибка, ${err}`);
@@ -147,7 +147,7 @@ const popupAddCard = new PopupWithForm(".popup_add", {
     popupAddCard.putSavingProcess();
     api.addNewCard({ name: formValues.placename, link: formValues.placeimage })
       .then((card) => {
-        cardsSection.addItem(createCard(card));
+        cardsSection.addItem(createCards(card));
         popupAddCard.close();
       })
       .catch((err) => {

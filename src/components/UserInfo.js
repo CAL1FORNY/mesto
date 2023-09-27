@@ -10,7 +10,7 @@ class UserInfo {
     return{
       username: this._username.textContent,
       description: this._userDescription.textContent,
-      avatarLink: this._avatarLink.src
+      avatar: this._avatarLink.src
     };
   }
 
