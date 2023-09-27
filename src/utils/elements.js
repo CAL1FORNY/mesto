@@ -11,5 +11,5 @@ const popupAvatarEditForm = popupAvatarEdit.querySelector('.popup__form');
 const avatarEditIcon = document.querySelector('.profile__avatar-edit')
 
 export {
-  profileEditIcon, cardAddIcon, popupProfile, popupProfileForm, popupCards, nameCardInput, linkCardInput, nameInput, descriptionInput, formCards, popupAvatarEditForm, avatarEditIcon
+  profileEditIcon, cardAddIcon, popupProfile, popupProfileForm, popupCards, nameInput, descriptionInput, formCards, popupAvatarEditForm, avatarEditIcon
 }

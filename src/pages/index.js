@@ -1,6 +1,6 @@
 import { Card } from "../components/Card.js";
-import { classListForm } from "../components/utils/constants.js";
-import { apiFindings } from "../components/utils/apiFindings.js";
+import { classListForm } from "../utils/constants.js";
+import { apiFindings } from "../utils/apiFindings.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
