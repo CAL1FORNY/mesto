@@ -31,7 +31,7 @@ const userInfo = new UserInfo({
   userAvatarSelector: ".profile__avatar",
 });
 
-const createCards = function (cardData) {
+const createCard = function (cardData) {
   const cardItem = new Card(
     cardData,
     ".template",
@@ -70,7 +70,7 @@ const createCards = function (cardData) {
 const cardsSection = new Section(
   {
     renderer: (cardData) => {
-      cardsSection.prependItem(createCards(cardData));
+      cardsSection.addItem(createCard(cardData));
     },
   },
   ".cards"
@@ -147,7 +147,7 @@ const popupAddCard = new PopupWithForm(".popup_add", {
     popupAddCard.putSavingProcess();
     api.addNewCard({ name: formValues.placename, link: formValues.placeimage })
       .then((card) => {
-        cardsSection.addItem(createCards(card));
+        cardsSection.prependItem(createCard(card));
         popupAddCard.close();
       })
       .catch((err) => {

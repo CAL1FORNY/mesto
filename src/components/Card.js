@@ -25,9 +25,9 @@ class Card {
   renderCardLike(card) {
     this._likes = card.likes;
     if (this._likes.length === 0) {
-      this.likeSelector.textContent = '';
+      this.likeCounter.textContent = '';
     } else {
-      this.likeSelector.textContent = this._likes.length;
+      this.likeCounter.textContent = this._likes.length;
     }
     if (this._isLiked()) {
       this._likeIcon.classList.add('cards__like_active');
