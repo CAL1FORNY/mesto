@@ -70,7 +70,7 @@ const createCard = function (cardData) {
 const cardsSection = new Section(
   {
     renderer: (cardData) => {
-      cardsSection.addItem(createCard(cardData));
+      cardsSection.appendItem(createCard(cardData));
     },
   },
   ".cards"
